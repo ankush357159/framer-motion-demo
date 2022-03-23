@@ -33,12 +33,15 @@ const buttonVariants = {
     textShadow: "0px 0px 8px rgb(255,255,255)",
     boxShadow: "0px 0px 8px rgb(255,255,255)",
     transition: {
-      duration:0.3,
-      yoyo:Infinity
-    }
+      duration: 0.3,
+      yoyo: Infinity,
+    },
+  },
+  exit: {
+    x: "-100vw",
+    transition: { ease: "easeInOut" },
   },
 };
-
 
 const Base = ({ addBase, pizza }) => {
   const bases = ["Classic", "Thin & Crispy", "Thick Crust"];
@@ -49,6 +52,7 @@ const Base = ({ addBase, pizza }) => {
       variants={containerVariants}
       initial='hidden'
       animate='visible'
+      exit="exit"
     >
       <h3>Step 1: Choose Your Base</h3>
       <ul>
@@ -69,17 +73,13 @@ const Base = ({ addBase, pizza }) => {
 
       {pizza.base && (
         <motion.div
-        variants={nextVariants}
+          variants={nextVariants}
           className='next'
-          initial="hidden"
-          animate="visible"
+          initial='hidden'
+          animate='visible'
         >
           <Link to='/toppings'>
-            <motion.button
-             variants={buttonVariants}
-             whileHover="hover"
-
-            >
+            <motion.button variants={buttonVariants} whileHover='hover'>
               Next
             </motion.button>
           </Link>

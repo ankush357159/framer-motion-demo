@@ -23,9 +23,13 @@ const buttonVariants = {
     textShadow: "0px 0px 8px rgb(255,255,255)",
     boxShadow: "0px 0px 8px rgb(255,255,255)",
     transition: {
-      duration:0.3,
-      yoyo:Infinity
-    }
+      duration: 0.3,
+      yoyo: Infinity,
+    },
+  },
+  exit: {
+    x: "-100vw",
+    transition: { ease: "easeInOut" },
   },
 };
 
@@ -40,10 +44,12 @@ const Toppings = ({ addTopping, pizza }) => {
   ];
 
   return (
-    <motion.div className='toppings container'
-    variants={containerVariants}
-    initial="hidden"
-    animate="visible"
+    <motion.div
+      className='toppings container'
+      variants={containerVariants}
+      initial='hidden'
+      animate='visible'
+      exit='exit'
     >
       <h3>Step 2: Choose Toppings</h3>
       <ul>
@@ -63,11 +69,7 @@ const Toppings = ({ addTopping, pizza }) => {
       </ul>
 
       <Link to='/order'>
-        <motion.button
-        variants={buttonVariants}
-        whileHover="hover"
-        
-        >
+        <motion.button variants={buttonVariants} whileHover='hover'>
           Order
         </motion.button>
       </Link>
